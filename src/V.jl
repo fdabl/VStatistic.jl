@@ -23,4 +23,13 @@ function vstat(n::Integer, p::Integer, R²)
     return v
 end
 
+
+function sample_size(p::Integer, R²; power=.8)
+    n = p
+    while vstat(n, p, R²) < power
+        n += 1
+    end
+    return n
+end
+
 end

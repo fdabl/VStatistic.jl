@@ -19,7 +19,8 @@ Pkg.add("V")
 run with
 
 ```
-using V:vstat
+using V
 
-vstat(120, 4, .05)
+V.vstat(120, 4, .05)
+V.sample_size(3, .05, power=.9)
 ```
