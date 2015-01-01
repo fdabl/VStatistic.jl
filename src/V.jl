@@ -1,22 +1,12 @@
-#=
-
-Implements the v-statistic, a measure that compares the estimation
-accuracy of the ordinary least squares estimator against a random benchmark.
-
-See the paper here: http://www.ncbi.nlm.nih.gov/m/pubmed/23661222/
-It features an implemention in R which relies on the "hypergeo" package.
-
-=#
-
 module V
 import GSL:sf_hyperg_2F1
 # could have also used scipy.special.hyp2f1 via @pyimports
 
 
-function stat(n::Integer, p::Integer, Rsq)
-    Rsq = Rsq <= 0 ? .0001 : Rsq
+function vstat(n::Integer, p::Integer, R²)
+    R² = R² <= 0 ? .0001 : R²
 
-    r = ((p - 1) * (1 - Rsq)) / ((n - p) * Rsq)
+    r = ((p - 1) * (1 - R²)) / ((n - p) * R²)
     g = min(r, 1)
     g = .4999 < g < .5001 ? .5001 : g
 
@@ -25,7 +15,7 @@ function stat(n::Integer, p::Integer, Rsq)
 
     v = begin
         ((2 * cos(α) * gamma((p + 2) / 2)) /
-        (sqrt(π) * gamma((p + 1) / 2))) *
+        (√(π) * gamma((p + 1) / 2))) *
         (sf_hyperg_2F1(.5, (1 - p) / 2, 3/2, cos(α)^2) -
         sin(α)^(p - 1))
     end
