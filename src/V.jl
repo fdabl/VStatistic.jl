@@ -24,12 +24,12 @@ function vstat(n::Integer, p::Integer, R²)
 end
 
 
-function sample_size(p::Integer, R²; power=.8)
+function sample_size(p::Integer, R²; v=.8)
     n = p
-    while vstat(n, p, R²) < power
+    while vstat(n, p, R²) < v
         n += 1
     end
-    return n
+    return n, round(n / p, 2)
 end
 
 end

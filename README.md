@@ -21,6 +21,6 @@ run with
 ```
 using V
 
-V.vstat(120, 4, .05)
-V.sample_size(3, .05, power=.9)
+V.vstat(120, 4, .05) # get v-statistic
+V.sample_size(3, .05, v=.9) # get needed (total n, n per predictor)
 ```
