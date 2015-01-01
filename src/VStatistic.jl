@@ -1,4 +1,4 @@
-module V
+module VStatistic
 import GSL:sf_hyperg_2F1
 # could have also used scipy.special.hyp2f1 via @pyimports
 

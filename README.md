@@ -13,14 +13,14 @@ I also wrote a python version, see [here](https://github.com/dostodabsi/vstat.py
 install with
 
 ```
-Pkg.add("V")
+Pkg.add("VStatistic")
 ```
 
 run with
 
 ```
-using V
+import VStatistic: vstat, sample_size
 
-V.vstat(120, 4, .05) # get v-statistic
-V.sample_size(3, .05, v=.9) # get needed (total n, n per predictor)
+vstat(120, 4, .05) # get v-statistic
+sample_size(3, .05, v=.9) # get needed (total n, n per predictor)
 ```
